@@ -47,12 +47,12 @@ for estudiante in estudiantes:
     promedios.append({"nombre": nombre, "promedio": promedio})
     print(f"{nombre}: {promedio:.2f}")
 
-# Calcular promedio más bajo y más alto
+#Calcular promedio más bajo y más alto
 if promedios:
     promedio_mas_bajo = min(promedios, key=lambda x: x["promedio"])
     promedio_mas_alto = max(promedios, key=lambda x: x["promedio"])
 
-# Filtrar estudiantes que aprobaron (promedio >= 4.0)
+#Filtrar estudiantes que aprobaron (promedio >= 4.0)
 estudiantes_aprobados = [promedio for promedio in promedios if promedio["promedio"] >= 4.0]
 
 print(f"--------------------------------------------------------------")
