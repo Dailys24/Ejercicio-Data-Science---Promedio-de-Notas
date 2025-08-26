@@ -10,7 +10,7 @@ estudiantes = [
     {"nombre": "Laura", "notas": [6.2, 6.5, 6.8]},
     {"nombre": "Javier", "notas": [5.0, 5.2, 5.4]},
     {"nombre": "Elena", "notas": [3.5, 4.0, 4.1]},
-    {"nombre": "Diego Vera", "notas": [2.0, 2.5, 3.2]},
+    {"nombre": "Diego", "notas": [2.0, 2.5, 3.2]},
     {"nombre": "Angelo", "notas": [7.0, 6.1, 6.3]},
     {"nombre": "Andres", "notas": [4.5, 4.2, 3.9]},
     {"nombre": "Valeria", "notas": [1.8, 4.7, 2.0]},
@@ -36,7 +36,7 @@ estudiantes = [
     {"nombre": "Carolina", "notas": [4.9, 5.0, 4.8]}, 
 ]
 
-#Calcular promedio de notas
+# 1. Calcular promedio de notas
 promedios = []
 
 print("Nombre y promedio de notas de cada estudiante:")
@@ -47,12 +47,12 @@ for estudiante in estudiantes:
     promedios.append({"nombre": nombre, "promedio": promedio})
     print(f"{nombre}: {promedio:.2f}")
 
-#Calcular promedio más bajo y más alto
+# 1. Calcular promedio más bajo y más alto
 if promedios:
     promedio_mas_bajo = min(promedios, key=lambda x: x["promedio"])
     promedio_mas_alto = max(promedios, key=lambda x: x["promedio"])
 
-#Filtrar estudiantes que aprobaron (promedio >= 4.0)
+# 2. Filtrar estudiantes que aprobaron (promedio >= 4.0)
 estudiantes_aprobados = [promedio for promedio in promedios if promedio["promedio"] >= 4.0]
 
 print(f"--------------------------------------------------------------")
@@ -60,3 +60,19 @@ print(f"Promedio más bajo: {promedio_mas_bajo['nombre']} con {promedio_mas_bajo
 print(f"Promedio más alto: {promedio_mas_alto['nombre']} con {promedio_mas_alto['promedio']:.2f}")
 print(f"--------------------------------------------------------------")
 print(f"Estudiantes que aprobaron sus asignaturas: {len(estudiantes_aprobados)}")
+
+# 3. Nota mas frecuente (moda) considerando todas las notas de todos los estudiantes.
+todas = [n for estudiante in estudiantes for n in estudiante["notas"]]
+
+moda = max(todas, key=lambda x: sum(1 for n in todas if n == x))
+frecuencia = sum(1 for n in todas if n == moda)
+
+# 4. Porcentaje de estudiantes con al menos una nota bajo 4.0.
+total = len(estudiantes)
+con_rojos = sum(1 for estudiante in estudiantes if any(n < 4.0 for n in estudiante["notas"]))
+porcentaje = (con_rojos / total) * 100
+
+print(f"--------------------------------------------------------------")
+print(f"La nota más frecuente es {moda} con {frecuencia} apariciones.")
+print(f"--------------------------------------------------------------")
+print(f"Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
