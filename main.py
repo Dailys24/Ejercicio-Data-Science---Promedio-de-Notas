@@ -76,3 +76,11 @@ print(f"--------------------------------------------------------------")
 print(f"La nota más frecuente es {moda} con {frecuencia} apariciones.")
 print(f"--------------------------------------------------------------")
 print(f"Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
+
+# 5. listado ordenado (de mayor a menor) de los estudiantes según su promedio.
+
+ranking_estudiantes = sorted(promedios, key=lambda x: x["promedio"], reverse=True)
+
+for i, estudiante in enumerate(ranking_estudiantes):
+    print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.2f}")
+
