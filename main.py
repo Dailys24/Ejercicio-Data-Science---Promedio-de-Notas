@@ -62,14 +62,14 @@ print(f"--------------------------------------------------------------")
 print(f"Estudiantes que aprobaron sus asignaturas: {len(estudiantes_aprobados)}")
 
 # 3. Nota mas frecuente (moda) considerando todas las notas de todos los estudiantes.
-todas = [n for estudiante in estudiantes for n in estudiante["notas"]]
+todas = [nota for estudiante in estudiantes for nota in estudiante["notas"]]
 
-moda = max(todas, key=lambda x: sum(1 for n in todas if n == x))
-frecuencia = sum(1 for n in todas if n == moda)
+moda = max(todas, key=lambda x: sum(1 for nota in todas if nota == x))
+frecuencia = sum(1 for nota in todas if nota == moda)
 
 # 4. Porcentaje de estudiantes con al menos una nota bajo 4.0.
 total = len(estudiantes)
-con_rojos = sum(1 for estudiante in estudiantes if any(n < 4.0 for n in estudiante["notas"]))
+con_rojos = sum(1 for estudiante in estudiantes if any(nota < 4.0 for nota in estudiante["notas"]))
 porcentaje = (con_rojos / total) * 100
 
 print(f"--------------------------------------------------------------")
