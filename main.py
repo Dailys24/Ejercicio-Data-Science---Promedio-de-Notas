@@ -45,7 +45,7 @@ for estudiante in estudiantes:
     notas = estudiante["notas"]
     promedio = sum(notas) / len(notas)
     promedios.append({"nombre": nombre, "promedio": promedio})
-    print(f"{nombre}: {promedio:.2f}")
+    print(f"{i+1}. {nombre}: {promedio:.2f}")
 
 # 1. Calcular promedio más bajo y más alto
 if promedios:
