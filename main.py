@@ -39,8 +39,8 @@ estudiantes = [
 # 1. Calcular promedio de notas
 promedios = []
 
-print("Nombre y promedio de notas de cada estudiante:")
-for estudiante in estudiantes:
+print("# Nombre y promedio de notas de cada estudiante:")
+for i, estudiante in enumerate(estudiantes):
     nombre = estudiante["nombre"]
     notas = estudiante["notas"]
     promedio = sum(notas) / len(notas)
@@ -56,10 +56,10 @@ if promedios:
 estudiantes_aprobados = [promedio for promedio in promedios if promedio["promedio"] >= 4.0]
 
 print(f"--------------------------------------------------------------")
-print(f"Promedio más bajo: {promedio_mas_bajo['nombre']} con {promedio_mas_bajo['promedio']:.2f}")
-print(f"Promedio más alto: {promedio_mas_alto['nombre']} con {promedio_mas_alto['promedio']:.2f}")
+print(f"#1 Promedio más bajo: {promedio_mas_bajo['nombre']} con {promedio_mas_bajo['promedio']:.2f}")
+print(f"#1 Promedio más alto: {promedio_mas_alto['nombre']} con {promedio_mas_alto['promedio']:.2f}")
 print(f"--------------------------------------------------------------")
-print(f"Estudiantes que aprobaron sus asignaturas: {len(estudiantes_aprobados)}")
+print(f"#2 Estudiantes que aprobaron sus asignaturas: {len(estudiantes_aprobados)}")
 
 # 3. Nota mas frecuente (moda) considerando todas las notas de todos los estudiantes.
 todas = [nota for estudiante in estudiantes for nota in estudiante["notas"]]
@@ -73,14 +73,16 @@ con_rojos = sum(1 for estudiante in estudiantes if any(nota < 4.0 for nota in es
 porcentaje = (con_rojos / total) * 100
 
 print(f"--------------------------------------------------------------")
-print(f"La nota más frecuente es {moda} con {frecuencia} apariciones.")
+print(f"#3 La nota más frecuente es {moda} con {frecuencia} apariciones.")
 print(f"--------------------------------------------------------------")
-print(f"Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
+print(f"#4 Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
+print(f"--------------------------------------------------------------")
 
 # 5. listado ordenado (de mayor a menor) de los estudiantes según su promedio.
 
 ranking_estudiantes = sorted(promedios, key=lambda x: x["promedio"], reverse=True)
 
+print(f"#5 Listado ordenado de los estudiantes según su promedio.")
+
 for i, estudiante in enumerate(ranking_estudiantes):
     print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.2f}%")
-
