@@ -82,7 +82,7 @@ print(f"--------------------------------------------------------------")
 
 ranking_estudiantes = sorted(promedios, key=lambda x: x["promedio"], reverse=True)
 
-print(f"#5 Listado ordenado de los estudiantes según su promedio.")
+print(f"#5 Listado ordenado de los estudiantes según su promedio (mayor a menor).")
 
 for i, estudiante in enumerate(ranking_estudiantes):
     print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.2f}")
