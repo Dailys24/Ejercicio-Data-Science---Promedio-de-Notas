@@ -45,7 +45,7 @@ for i, estudiante in enumerate(estudiantes):
     notas = estudiante["notas"]
     promedio = sum(notas) / len(notas)
     promedios.append({"nombre": nombre, "promedio": promedio})
-    print(f"{i+1}. {nombre}: {promedio:.2f}")
+    print(f"{i+1}. {nombre}: {promedio:.1f}")
 
 # 1. Calcular promedio más bajo y más alto
 if promedios:
@@ -56,8 +56,8 @@ if promedios:
 estudiantes_aprobados = [promedio for promedio in promedios if promedio["promedio"] >= 4.0]
 
 print(f"--------------------------------------------------------------")
-print(f"#1 Promedio más bajo: {promedio_mas_bajo['nombre']} con {promedio_mas_bajo['promedio']:.2f}")
-print(f"#1 Promedio más alto: {promedio_mas_alto['nombre']} con {promedio_mas_alto['promedio']:.2f}")
+print(f"#1 Promedio más bajo: {promedio_mas_bajo['nombre']} con {promedio_mas_bajo['promedio']:.1f}")
+print(f"#1 Promedio más alto: {promedio_mas_alto['nombre']} con {promedio_mas_alto['promedio']:.1f}")
 print(f"--------------------------------------------------------------")
 print(f"#2 Estudiantes que aprobaron sus asignaturas: {len(estudiantes_aprobados)}")
 
@@ -75,7 +75,7 @@ porcentaje = (con_rojos / total) * 100
 print(f"--------------------------------------------------------------")
 print(f"#3 La nota más frecuente es {moda} con {frecuencia} apariciones.")
 print(f"--------------------------------------------------------------")
-print(f"#4 Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
+print(f"#4 Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.1f}%")
 print(f"--------------------------------------------------------------")
 
 # 5. listado ordenado (de mayor a menor) de los estudiantes según su promedio.
@@ -85,4 +85,4 @@ ranking_estudiantes = sorted(promedios, key=lambda x: x["promedio"], reverse=Tru
 print(f"#5 Listado ordenado de los estudiantes según su promedio (mayor a menor).")
 
 for i, estudiante in enumerate(ranking_estudiantes):
-    print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.2f}")
+    print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.1f}")
