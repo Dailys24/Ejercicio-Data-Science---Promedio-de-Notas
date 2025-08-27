@@ -82,5 +82,5 @@ print(f"Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2
 ranking_estudiantes = sorted(promedios, key=lambda x: x["promedio"], reverse=True)
 
 for i, estudiante in enumerate(ranking_estudiantes):
-    print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.2f}")
+    print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.2f}%")
 
