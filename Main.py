@@ -1,105 +1,88 @@
-#Main.py
+#Ejercicio Data Science - Promedio de Notas
 
-#Tarea 2 Data Science
+estudiantes = [
+    {"nombre": "Ana", "notas": [6.5, 7.0, 5.8]},
+    {"nombre": "Luis", "notas": [4.2, 5.1, 6.0]},
+    {"nombre": "Sofia", "notas": [3.9, 4.0, 4.5]},
+    {"nombre": "Francisca", "notas": [6.9, 6.8, 7.0]},
+    {"nombre": "Maria", "notas": [5.5, 6.0, 5.9]},
+    {"nombre": "Carlos", "notas": [4.0, 4.5, 3.8]},
+    {"nombre": "Laura", "notas": [6.2, 6.5, 6.8]},
+    {"nombre": "Javier", "notas": [5.0, 5.2, 5.4]},
+    {"nombre": "Elena", "notas": [3.5, 4.0, 4.1]},
+    {"nombre": "Diego", "notas": [2.0, 2.5, 3.2]},
+    {"nombre": "Angelo", "notas": [7.0, 6.1, 6.3]},
+    {"nombre": "Andres", "notas": [4.5, 4.2, 3.9]},
+    {"nombre": "Valeria", "notas": [1.8, 4.7, 2.0]},
+    {"nombre": "Juan", "notas": [5.1, 5.3, 5.0]},
+    {"nombre": "Gabriela", "notas": [4.0, 4.3, 3.7]},
+    {"nombre": "Nicolas Rosale", "notas": [5.0, 3.0, 4.0]},
+    {"nombre": "Paula", "notas": [6.0, 6.5, 6.2]},
+    {"nombre": "Ricardo", "notas": [4.8, 4.9, 5.1]},
+    {"nombre": "Fernanda", "notas": [5.8, 2.3, 4.2]},
+    {"nombre": "Jorge", "notas": [5.6, 5.5, 5.8]},
+    {"nombre": "Natalia", "notas": [3.6, 4.0, 3.5]},
+    {"nombre": "Hugo", "notas": [6.1, 3.2, 6.0]},
+    {"nombre": "Camila", "notas": [6.4, 6.0, 6.5]},
+    {"nombre": "Roberto", "notas": [5.2, 5.0, 5.3]},
+    {"nombre": "Matia Lope", "notas": [4.1, 4.2, 4.0]},
+    {"nombre": "Manuel", "notas": [5.8, 2.3, 4.2]}, 
+    {"nombre": "Silvia", "notas": [6.7, 6.9, 7.0]},
+    {"nombre": "Felipe", "notas": [5.3, 5.5, 5.2]},
+    {"nombre": "Adriana", "notas": [3.8, 4.1, 3.9]},
+    {"nombre": "Benjamin", "notas": [6.1, 3.2, 6.0]},
+    {"nombre": "Lucia", "notas": [6.1, 6.3, 6.0]},
+    {"nombre": "Victor", "notas": [4.9, 5.0, 4.8]},
+    {"nombre": "Carolina", "notas": [4.9, 5.0, 4.8]}, 
+]
 
-import pandas as pd
-import os
-from datos import datos
+# 1. Calcular promedio de notas
+promedios = []
 
-# Definimos las funciones para cada opción del menú
-# Estas funciones son simuladas, tendrías que reemplazarlas con tu lógica real
-def problema1():
+print("# Nombre y promedio de notas de cada estudiante:")
+for i, estudiante in enumerate(estudiantes):
+    nombre = estudiante["nombre"]
+    notas = estudiante["notas"]
+    promedio = sum(notas) / len(notas)
+    promedios.append({"nombre": nombre, "promedio": promedio})
+    print(f"{i+1}. {nombre}: {promedio:.1f}")
 
-    #Llama a la función de cálculo y muestra los resultados.
-    
-    resultados = calcular_analisis_notas()
+# 1. Calcular promedio más bajo y más alto
+if promedios:
+    promedio_mas_bajo = min(promedios, key=lambda x: x["promedio"])
+    promedio_mas_alto = max(promedios, key=lambda x: x["promedio"])
 
-    print("--- Resumen de Notas del Problema 1 ---")
-    print(f"Promedio general del curso: {resultados['promedio_general']:.2f}")
-    print("---")
-    print(f"La nota más alta registrada es: {resultados['nota_mas_alta']:.2f}")
-    print("---")
-    print(f"La nota más baja registrada es: {resultados['nota_mas_baja']:.2f}")
-    print("---")
-    print(f"El alumno con el promedio más alto es: {resultados['alumno_promedio_max']['nombre']} con un promedio de {resultados['alumno_promedio_max']['promedio']:.2f}")
-    print("---")
-    print(f"El alumno con el promedio más bajo es: {resultados['alumno_promedio_min']['nombre']} con un promedio de {resultados['alumno_promedio_min']['promedio']:.2f}")
-    print("\n--- DataFrame Completo con Promedios ---")
-    print(resultados['df_completo'][['nombre', 'promedio']])
+# 2. Filtrar estudiantes que aprobaron (promedio >= 4.0)
+estudiantes_aprobados = [promedio for promedio in promedios if promedio["promedio"] >= 4.0]
 
-# Función principal que contiene el menú
-def main():
-    while True:
-        # Limpiar la pantalla de la consola
-        os.system('cls' if os.name == 'nt' else 'clear')
-        
-        # Menú del programa
-        print("****************************************************************************************")
-        print("\n-----Base de datos de Licencias Municipalidad de Pelotillehue-----\n")
-        print("------------- MENU -------------")
-        print("\n\u27a4 [1] Calcuar el promedio de noas y promedio mas alto y bajo.")
-        print("\n\u27a4 [2] Filtrar estudiantes que aprobaron (promedio >= 4.0).")
-        print("\n\u27a4 [3] Nota mas frecuente (moda) considerando todas las notas de todos los estudiantes.")
-        print("\n\u27a4 [4] Porcentaje de estudiantes con al menos una nota bajo 4.0.")
-        print("\n\u27a4 [5] Listado ordenado (de mayor a menor) de los estudiantes según su promedio.")
-        print("\n\u27a4 [6] Terminar")
-        print("\n****************************************************************************************")
+print(f"--------------------------------------------------------------")
+print(f"#1 Promedio más bajo: {promedio_mas_bajo['nombre']} con {promedio_mas_bajo['promedio']:.1f}")
+print(f"#1 Promedio más alto: {promedio_mas_alto['nombre']} con {promedio_mas_alto['promedio']:.1f}")
+print(f"--------------------------------------------------------------")
+print(f"#2 Estudiantes que aprobaron sus asignaturas: {len(estudiantes_aprobados)}")
 
-        try:
-            op = int(input("\nIngrese una opcion: "))
-            
-            if op < 1 or op > 6:
-                print("\n*** Opcion invalida. Porfavor digite nuevamente ***\n")
-                input("Presione Enter para continuar...")
-                continue # Vuelve al inicio del bucle
-            
-            # Switch-case en Python (usamos un diccionario o if/elif/else)
-            if op == 1:
-                print("------------------------------------------------------------------------------------ ")
-                print(" es:")
-                problema1()  # Llamamos a la función del problema 1
-                print("------------------------------------------------------------------------------------ ")
-            
-            elif op == 2:
-                print("------------------------------------------------------------------------------------ ")
-                print(" es:")
-                #Ingresamos la funcion
-                print("------------------------------------------------------------------------------------ ")
-            elif op == 3:
-                print("------------------------------------------------------------------------------------ ")
-                print(" es:")
-                #Ingresamos la funcion
-                print("------------------------------------------------------------------------------------ ")
-            elif op == 4:
-                print("------------------------------------------------------------------------------------ ")
-                print(" es:")
-                #Ingresamos la funcion
-                print("------------------------------------------------------------------------------------ ")
-            
-            elif op == 5:
-                print("------------------------------------------------------------------------------------ ")
-                print(" es:")
-                #Ingresamos la funcion
-                print("------------------------------------------------------------------------------------ ")
-            
-            elif op == 6:
-                print("\n****Gracias por utilizar****")
-                break
+# 3. Nota mas frecuente (moda) considerando todas las notas de todos los estudiantes.
+todas = [nota for estudiante in estudiantes for nota in estudiante["notas"]]
 
-            while True:
-                opcion = input("\n\u27a4¿Desea Realizar otra operacion? (Y=si/N=no): ").upper()
-                if opcion == 'N':
-                    print("\n****Gracias por utilizar****")
-                    return
-                elif opcion == 'Y':
-                    break
-                else:
-                    print("Operacion invalida.")
+moda = max(todas, key=lambda x: sum(1 for nota in todas if nota == x))
+frecuencia = sum(1 for nota in todas if nota == moda)
 
-        except ValueError:
-            print("\n*** Opcion invalida. Porfavor digite un numero ***\n")
-            input("Presione Enter para continuar...")
+# 4. Porcentaje de estudiantes con al menos una nota bajo 4.0.
+total = len(estudiantes)
+con_rojos = sum(1 for estudiante in estudiantes if any(nota < 4.0 for nota in estudiante["notas"]))
+porcentaje = (con_rojos / total) * 100
 
-# Ejecutamos la función principal
-if __name__ == "__main__":
-    main()
+print(f"--------------------------------------------------------------")
+print(f"#3 La nota más frecuente es {moda} con {frecuencia} apariciones.")
+print(f"--------------------------------------------------------------")
+print(f"#4 Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.1f}%")
+print(f"--------------------------------------------------------------")
+
+# 5. listado ordenado (de mayor a menor) de los estudiantes según su promedio.
+
+ranking_estudiantes = sorted(promedios, key=lambda x: x["promedio"], reverse=True)
+
+print(f"#5 Listado ordenado de los estudiantes según su promedio (mayor a menor).")
+
+for i, estudiante in enumerate(ranking_estudiantes):
+    print(f"{i+1}. {estudiante['nombre']}: {estudiante['promedio']:.1f}")
